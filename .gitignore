@@ -1,0 +1,7 @@
+*~
+*.pyc
+*.class
+*.swp
+.vagrant
+docker/spark/data
+
