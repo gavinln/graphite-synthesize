@@ -20,19 +20,21 @@ sudo python manage.py createsuperuser
 
 7. Open a web browser to https://192.168.33.10:443
 
+8. Use the username & password in step 6 to login
+
 To install and run Diamond
-1. Go to the home directory
+1. Go to the home directory in the VM
 cd ~
 
 2. Clone the Diamond repository
 git clone https://github.com/BrightcoveOS/Diamond.git
 
-3. Change to dirctory
-cd ~/Diamond
+3. Install pre-requisites
+sudo apt-get install -y make pbuilder
+sudo apt-get install -y python-support python-mock cdbs
 
-4. Install pre-requisites
-sudo apt-get install make pbuilder
-sudo apt-get install python-support python-mock cdbs
+4. Change to dirctory
+cd ~/Diamond
 
 5. Build package
 make builddeb
