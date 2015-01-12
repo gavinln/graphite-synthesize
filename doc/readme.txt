@@ -52,7 +52,22 @@ sudo cp diamond.conf.example diamond.conf
 3. Restart diamond
 sudo service diamond restart
 
+To change the Graphite Django application time zone
+1. Change to the settings directory
+cd /opt/graphite/webapp/graphite
+
+2. Edit the settings file
+sudo vim local_settings.py
+
+3. Add the line to the settings file
+TIME_ZONE = 'America/Los_Angeles'
+
+4. Restart the Graphite web site
+sudo service apache2 restart
+
+
 To add the Mongodb collector add the following lines to diamond.conf
 [[MongoDBCollector]]
 enabled = True
 hosts = localhost:27017
+
