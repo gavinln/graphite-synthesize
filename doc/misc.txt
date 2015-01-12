@@ -1,0 +1,25 @@
+Change the time zone to "America/Los_Angeles"
+echo "America/Los_Angeles" | sudo tee /etc/timezone
+sudo dpkg-reconfigure --frontend noninteractive tzdata
+
+Run process to get data from Jenkins and push to Graphite
+cd /vagrant/python
+while true; do python jenkins_to_graphite.py --jenkins-url=http://fqa-misc-05:8080/ --graphite-server=localhost; sleep 5; done
+
+Start carbon-cache
+sudo service carbon-cache start
+
+Send data to graphite
+echo "test.gavin.count 3 `date +%s`" | nc localhost 2003
+
+To set the time zone
+sudo vim /opt/graphite/webapp/graphite/settings.py
+
+Change line
+TIME_ZONE = 'America/Los_Angeles'
+
+Restart Apache
+sudo service apache2 restart
+
+
+
